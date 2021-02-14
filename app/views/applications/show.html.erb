@@ -5,5 +5,8 @@ City: <%= @application.city %><br>
 State: <%= @application.state %><br>
 Zipcode: <%= @application.zip %><br>
 Description: <%= @application.description %><br>
-Pet Names: <%= @application.pet_names %><br>
+Pets: <ul><% @pets.each do |pet| %>
+    <li><a href="/pets/<%= pet.id %>"><%= pet.name %></a></li>
+  <% end %></ul>
+
 Application Status: <%= @application.application_status %><br>

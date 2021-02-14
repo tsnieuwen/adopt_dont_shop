@@ -19,10 +19,12 @@ application1 = Application.create(name: "Tommy",
                                   description: "I like dogs",
                                   application_status: "Pending")
 
-pet1 = Pet.create(image: "Spot's picture",
-                  name: "Spot",
-                  approximate_age: 2,
+pet1 = Pet.create(image: "rudy.jpg",
+                  name: "Rudy",
+                  approximate_age: 1,
                   shelter_id: 1,
                   description: "Full of energy",
-                  adoptable: true,
+                  adoptable: false,
                   sex: 1)
+
+PetApplication.create!(pet: pet1, application: application1)
