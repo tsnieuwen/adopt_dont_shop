@@ -62,14 +62,22 @@ RSpec.describe "As a visitor" do
   describe "When I fill out the forms and hit the 'Submit' button " do
     it "Redirects me to the new applications show page, where all the application information is rendered" do
       visit '/applications/new'
-      expect(page).to have_content('Name:')
-      expect(page).to have_content('Street Address:')
-      expect(page).to have_content('City:')
-      expect(page).to have_content('State:')
-      expect(page).to have_content('Zipcode:')
-      expect(page).to have_content('Why will you be a good home for this pet(s)?')
+      fill_in(:name, with: 'Mike')
+      fill_in(:address, with: '459 Broadway')
+      fill_in(:city, with: 'Seattle')
+      fill_in(:state, with: 'WA')
+      fill_in(:zip, with: '23569')
+      fill_in(:description, with: 'I want a dog')
+      click_button('Submit')
+      expect(page).to have_content("Mike")
+      expect(page).to have_content("Seattle")
+      expect(page).to have_content("WA")
+      expect(page).to have_content("23569")
+      expect(page).to have_content("I want a dog")
     end
   end
+
+
 
 #     it "Renders the applicant's full address" do
 #       visit '/applications/1'
