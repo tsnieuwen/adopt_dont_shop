@@ -37,12 +37,40 @@ RSpec.describe "As a visitor" do
       expect(page).to have_link('Start an Application')
     end
   end
-#   describe "When I visit an applications show page" do
-#     it "Renders the applicant's name" do
-#       visit '/applications/1'
-#       expect(page).to have_content(@application1.name)
-#     end
-#
+
+  describe "When I click the 'Start an Application' link" do
+    it "Redirects me to the new applications page" do
+      visit '/pets'
+      click_link('Start an Application')
+      expect(page).to have_current_path("/applications/new")
+    end
+  end
+
+  describe "When on the '/applications/new' page" do
+    it "Renders a form where the applicant can input their name, address, city, state, zipcode, why you would make a good owner, and then a submit button" do
+      visit '/applications/new'
+      expect(page).to have_content('Name:')
+      expect(page).to have_content('Street Address:')
+      expect(page).to have_content('City:')
+      expect(page).to have_content('State:')
+      expect(page).to have_content('Zipcode:')
+      expect(page).to have_content('Why will you be a good home for this pet(s)?')
+      expect(page).to have_button('Submit')
+    end
+  end
+
+  describe "When I fill out the forms and hit the 'Submit' button " do
+    it "Redirects me to the new applications show page, where all the application information is rendered" do
+      visit '/applications/new'
+      expect(page).to have_content('Name:')
+      expect(page).to have_content('Street Address:')
+      expect(page).to have_content('City:')
+      expect(page).to have_content('State:')
+      expect(page).to have_content('Zipcode:')
+      expect(page).to have_content('Why will you be a good home for this pet(s)?')
+    end
+  end
+
 #     it "Renders the applicant's full address" do
 #       visit '/applications/1'
 #       expect(page).to have_content(@application1.address)

@@ -5,4 +5,8 @@ class ApplicationsController < ApplicationController
     @pets = @application.pets
   end
 
+  def new
+    @application = Application.new
+  end
+
 end
