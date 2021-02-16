@@ -77,42 +77,4 @@ RSpec.describe "As a visitor" do
     end
   end
 
-
-
-#     it "Renders the applicant's full address" do
-#       visit '/applications/1'
-#       expect(page).to have_content(@application1.address)
-#       expect(page).to have_content(@application1.city)
-#       expect(page).to have_content(@application1.state)
-#       expect(page).to have_content(@application1.zip)
-#     end
-#
-#     it "Renders a description of why applicant wants to adopt" do
-#       visit '/applications/1'
-#       expect(page).to have_content(@application1.description)
-#     end
-#
-#     it "Renders names of pets that the applicant want to adopt" do
-#       visit '/applications/1'
-#       expect(page).to have_content(@pet1.name)
-#     end
-#
-#     it "Renders the application status" do
-#       visit '/applications/1'
-#       expect(page).to have_content(@application1.application_status)
-#     end
-#
-#     it "Renders the name of the pets as a hyperlink" do
-#       visit '/applications/1'
-#       expect(page).to have_link(@pet1.name)
-#     end
-#
-#     describe "When I click on a pet name" do
-#       it "Takes me to the pet's show page" do
-#         visit '/applications/1'
-#         click_link("#{@pet1.name}")
-#         expect(page).to have_current_path("/pets/#{@pet1.id}")
-#       end
-#     end
-#   end
 end
