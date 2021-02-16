@@ -34,18 +34,11 @@ RSpec.describe "As a visitor" do
   describe "When I visit the new application page" do
     describe "And I fail to fill in any of the form fields" do
       describe "And I click 'Submit'" do
-        it "I cannot create an application without applicant's name" do
+        it "I prompts user to fill out the blank forms" do
           visit '/applications/new'
           click_button('Submit')
-          expect(page).to have_current_path('/applications/new')
-          expect(page).to have_content("Application not created: Required information missing.")
 
-          # expect(page).to have_content("Please enter your name")
-          # expect(page).to have_content("Please enter your address")
-          # expect(page).to have_content("Please enter your city")
-          # expect(page).to have_content("Please enter your state")
-          # expect(page).to have_content("Please enter your zipcode")
-          # expect(page).to have_content("Please enter why you will be a good home")
+          expect(page).to have_content('Application not created: Please fill in blank fields')
         end
       end
     end
