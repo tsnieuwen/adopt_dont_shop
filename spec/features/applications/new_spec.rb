@@ -26,9 +26,8 @@ RSpec.describe "As a visitor" do
                                       zip: 80211,
                                       description: "I like dogs",
                                       application_status: "Pending",
-                                      id: 1)
+                                      id: 89)
 
-    PetApplication.create!(pet: @pet1, application: @application1)
   end
 
   describe "As a visitor, when I visit the pet index page" do
@@ -47,14 +46,13 @@ RSpec.describe "As a visitor" do
   end
 
   describe "When on the '/applications/new' page" do
-    it "Renders a form where the applicant can input their name, address, city, state, zipcode, why you would make a good owner, and then a submit button" do
+    it "Renders a form where the applicant can input their name, address, city, state, zipcode, and then a submit button" do
       visit '/applications/new'
       expect(page).to have_content('Name:')
       expect(page).to have_content('Street Address:')
       expect(page).to have_content('City:')
       expect(page).to have_content('State:')
       expect(page).to have_content('Zipcode:')
-      expect(page).to have_content('Why will you be a good home for this pet(s)?')
       expect(page).to have_button('Submit')
     end
   end
@@ -67,13 +65,11 @@ RSpec.describe "As a visitor" do
       fill_in(:city, with: 'Seattle')
       fill_in(:state, with: 'WA')
       fill_in(:zip, with: '23569')
-      fill_in(:description, with: 'I want a dog')
       click_button('Submit')
       expect(page).to have_content("Mike")
       expect(page).to have_content("Seattle")
       expect(page).to have_content("WA")
       expect(page).to have_content("23569")
-      expect(page).to have_content("I want a dog")
     end
   end
 
