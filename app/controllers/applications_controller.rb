@@ -25,9 +25,10 @@ class ApplicationsController < ApplicationController
   def update
   application = Application.find(params[:id])
   application.update({
-    description: params[:application][:description]
+    description: params[:description],
+    application_status: "Pending"
     })
-  team.save
+  application.save
   redirect_to "/applications/#{application.id}"
 end
 
