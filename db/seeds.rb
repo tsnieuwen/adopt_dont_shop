@@ -15,8 +15,7 @@ application1 = Application.create(name: "Tommy",
                                   address: "2860 W32 Ave",
                                   city: "Denver",
                                   state: "CO",
-                                  zip: 80211,
-                                  description: "I like dogs"
+                                  zip: 80211
                                   )
 
 pet1 = Pet.create(image: "rudy.jpg",

@@ -22,6 +22,15 @@ class ApplicationsController < ApplicationController
       end
   end
 
+  def update
+  application = Application.find(params[:id])
+  application.update({
+    description: params[:application][:description]
+    })
+  team.save
+  redirect_to "/applications/#{application.id}"
+end
+
   private
   def application_params
     params.permit(:name, :address, :city, :state, :zip, :description)
