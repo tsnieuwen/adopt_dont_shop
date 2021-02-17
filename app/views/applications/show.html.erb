@@ -21,19 +21,18 @@ Application Status: <%= @application.application_status %><br>
 <% end %>
 
 <% if @searched_pet %>
-<%= @searched_pet.name %><br>
-Sex: <%= @searched_pet.sex %><br>
-Approx Age: <%= @searched_pet.approximate_age %><br>
-Description: <%= @searched_pet.description %><br>
-<%= image_tag "#{@searched_pet.image}" %><br>
-<% end %>
-
-<% if @searched_pet %>
-<%= form_with url: "/pet_applications", method: :post, local: true do |form| %>
-  <%= form.hidden_field :pet, value: @searched_pet.id %>
-  <%= form.hidden_field :application, value: @application.id %>
-  <%= form.submit('Adopt this Pet') %>
-<% end %>
+  <% @searched_pet.each do |pet| %>
+    <%= pet.name %><br>
+    Sex: <%= pet.sex %><br>
+    Approx Age: <%= pet.approximate_age %><br>
+    Description: <%= pet.description %><br>
+    <%= image_tag "#{pet.image}" %><br>
+    <%= form_with url: "/pet_applications", method: :post, local: true do |form| %>
+    <%= form.hidden_field :pet, value: pet.id %>
+    <%= form.hidden_field :application, value: @application.id %>
+    <%= form.submit('Adopt this Pet') %><br>
+    <% end %>
+  <% end %>
 <% end %>
 
 <% if @application.pets.count > 0 && @application.application_status == "In Progress" %>

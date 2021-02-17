@@ -25,7 +25,7 @@ RSpec.describe "As a visitor" do
                                       state: "CO",
                                       zip: 80211,
                                       description: "I like dogs",
-                                      application_status: "Pending",
+                                      application_status: "In Progress",
                                       id: 1)
 
     PetApplication.create!(pet: @pet1, application: @application1)

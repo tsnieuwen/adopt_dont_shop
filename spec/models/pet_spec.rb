@@ -14,7 +14,8 @@ describe Pet, type: :model do
                                   address: "123 Main Street",
                                   city: "Denver",
                                   state: "CO",
-                                  zip: 12588)
+                                  zip: 12588,
+                                  id: 1)
 
         pet1 = Pet.create(image: "rudy.jpg",
                           name: "Rudy",
@@ -23,9 +24,46 @@ describe Pet, type: :model do
                           description: "Full of energy",
                           adoptable: false,
                           sex: 1)
+        expect(Pet.find_by_name('Rudy')).to eq([pet1])
+      end
 
-        expect(Pet.find_by_name('Rudy')).to eq(pet1)
-      end 
+      it "returns names that are a partial match" do
+        shelter1 = Shelter.create(name: "Denver Humane Society",
+                                  address: "123 Main Street",
+                                  city: "Denver",
+                                  state: "CO",
+                                  zip: 12588,
+                                  id: 1)
+
+        pet1 = Pet.create(image: "rudy.jpg",
+                          name: "Rudy",
+                          approximate_age: 1,
+                          shelter_id: 1,
+                          description: "Full of energy",
+                          adoptable: false,
+                          sex: 1
+                        )
+        expect(Pet.find_by_name('ud')).to eq([pet1])
+      end
+
+      it "returns names that are a case insensitive match" do
+        shelter1 = Shelter.create(name: "Denver Humane Society",
+                                  address: "123 Main Street",
+                                  city: "Denver",
+                                  state: "CO",
+                                  zip: 12588,
+                                  id: 1)
+
+        pet1 = Pet.create(image: "rudy.jpg",
+                          name: "Rudy",
+                          approximate_age: 1,
+                          shelter_id: 1,
+                          description: "Full of energy",
+                          adoptable: false,
+                          sex: 1
+                        )
+        expect(Pet.find_by_name('Ud')).to eq([pet1])
+      end
     end
   end
   # describe 'validations' do
