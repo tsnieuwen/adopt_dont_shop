@@ -9,4 +9,11 @@ class Pet < ApplicationRecord
             }
 
   enum sex: [:female, :male]
+
+  def find_by_name(name)
+    self.find_all do |pet|
+      pet.name == name
+    end
+  end
+
 end

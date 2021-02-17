@@ -16,8 +16,8 @@ application1 = Application.create(name: "Tommy",
                                   city: "Denver",
                                   state: "CO",
                                   zip: 80211,
-                                  description: "I like dogs",
-                                  application_status: "Pending")
+                                  description: "I like dogs"
+                                  )
 
 pet1 = Pet.create(image: "rudy.jpg",
                   name: "Rudy",
@@ -27,4 +27,4 @@ pet1 = Pet.create(image: "rudy.jpg",
                   adoptable: false,
                   sex: 1)
 
-PetApplication.create!(pet: pet1, application: application1)
+# PetApplication.create!(pet: pet1, application: application1)

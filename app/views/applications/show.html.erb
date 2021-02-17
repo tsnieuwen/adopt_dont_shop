@@ -11,4 +11,18 @@ Pets: <ul><% @pets.each do |pet| %>
 
 Application Status: <%= @application.application_status %><br>
 
-<h2>Add a Pet to this Application</h2>
+<h3>Add a Pet to this Application</h3>
+
+<%= form_with url: "/applications/#{@application.id}", method: :get, local: true do |form| %>
+  <%= form.label(:pet_name, 'Pet name:') %>
+  <%= form.text_field :pet_name%><br>
+  <%= form.submit('Submit') %>
+<% end %>
+
+<% if @searched_pet %>
+<%= @searched_pet.name %><br>
+Sex: <%= @searched_pet.sex %><br>
+Approx Age: <%= @searched_pet.approximate_age %><br>
+Description: <%= @searched_pet.description %><br>
+<%= image_tag "#{@searched_pet.image}" %><br>
+<% end %>
