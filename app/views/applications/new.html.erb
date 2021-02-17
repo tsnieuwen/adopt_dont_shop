@@ -11,7 +11,5 @@
   <%= form.text_field :state, value: @application.state %><br>
   <%= form.label(:zip, 'Zipcode:') %>
   <%= form.text_field :zip, value: @application.zip %><br>
-  <%= form.label(:description, 'Why will you be a good home for this pet(s)?') %>
-  <%= form.text_area :description, size: "60x10", value: @application.description %><br>
   <%= form.submit('Submit') %>
 <% end %>
