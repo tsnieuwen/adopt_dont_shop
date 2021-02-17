@@ -7,6 +7,27 @@ describe Pet, type: :model do
     it {should have_many(:applications).through(:pet_applications)}
   end
 
+  describe 'class_methods' do
+    describe '#find_by_name' do
+      it "finds correct pet record by name" do
+        shelter1 = Shelter.create(name: "Denver Humane Society",
+                                  address: "123 Main Street",
+                                  city: "Denver",
+                                  state: "CO",
+                                  zip: 12588)
+
+        pet1 = Pet.create(image: "rudy.jpg",
+                          name: "Rudy",
+                          approximate_age: 1,
+                          shelter_id: 1,
+                          description: "Full of energy",
+                          adoptable: false,
+                          sex: 1)
+
+        expect(Pet.find_by_name('Rudy')).to eq(pet1)
+      end 
+    end
+  end
   # describe 'validations' do
   #   it {should validate_presence_of :name}
   #   it {should validate_presence_of :description}
