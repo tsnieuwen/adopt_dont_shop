@@ -26,6 +26,13 @@ RSpec.describe "As a visitor" do
                                       zip: 80211,
                                       id: 1)
 
+    @application2 = Application.create(name: "Fred",
+                                      address: "2860 W32 Ave",
+                                      city: "Denver",
+                                      state: "CO",
+                                      zip: 80211,
+                                      id: 2)
+
   end
 
   describe "When I visit an application show page" do
@@ -75,6 +82,29 @@ RSpec.describe "As a visitor" do
           expect(page).to have_content('Status: rejected')
           expect(page).to have_button('Approve Pet')
           expect(page).to_not have_button('Reject Pet')
+        end
+      end
+
+      describe "When I reject a pet on one application" do
+        it "does not affect the pet's status on another application" do
+          visit '/applications/1'
+          fill_in(:pet_name, with: 'Rudy')
+          click_button('Submit')
+          click_button('Adopt this Pet')
+          fill_in(:description, with: 'I really want this dog')
+          click_button('Submit Application')
+          visit '/admin/applications/1'
+          click_button('Reject Pet')
+
+          visit '/applications/2'
+          fill_in(:pet_name, with: 'Rudy')
+          click_button('Submit')
+          click_button('Adopt this Pet')
+          fill_in(:description, with: 'I want this dog more than the other guy')
+          click_button('Submit Application')
+          visit '/admin/applications/2'
+        
+          expect(page).to_not have_content('Status: rejected')
         end
       end
   end
