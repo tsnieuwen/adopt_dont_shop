@@ -8,6 +8,17 @@ class ApplicationsController < ApplicationController
     end
   end
 
+  def admin_show
+    @application = Application.find(params[:id])
+    @pets = @application.pets
+    @pet_applications = PetApplication.all 
+    @pet_application = PetApplication.find_by(pet_id: params[:pet].to_i, application_id: @application.id)
+
+    if (params[:pet_name])
+      @searched_pet = Pet.find_by_name(params[:pet_name])
+    end
+  end
+
   def new
     @application = Application.new
   end

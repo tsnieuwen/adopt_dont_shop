@@ -9,6 +9,14 @@ class PetApplicationsController < ApplicationController
     redirect_to "/applications/#{@application.to_i}"
   end
 
+  def update
+    status = params[:status]
+    pet_application = PetApplication.find_by(pet_id: params[:pet].to_i, application_id: params[:application].to_i)
+    pet_application.update(status: status)
+    pet_application.save
+    redirect_to "/admin/applications/#{params[:application].to_i}"
+  end
+
   # def new
   #   @application = Application.new
   # end

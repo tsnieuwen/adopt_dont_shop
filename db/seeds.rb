@@ -17,13 +17,36 @@ application1 = Application.create(name: "Tommy",
                                   state: "CO",
                                   zip: 80211
                                   )
-
 pet1 = Pet.create(image: "rudy.jpg",
                   name: "Rudy",
                   approximate_age: 1,
                   shelter_id: 1,
                   description: "Full of energy",
-                  adoptable: false,
+                  adoptable: true,
                   sex: 1)
+
+pet2 = Pet.create(image: "clifford.jpg",
+                  name: "Clifford",
+                  approximate_age: 30,
+                  shelter_id: 1,
+                  description: "Big and red",
+                  adoptable: true,
+                  sex: 1)
+
+pet3 = Pet.create(image: "scooby.jpg",
+                  name: "Scooby",
+                  approximate_age: 35,
+                  shelter_id: 1,
+                  description: "Rut Row",
+                  adoptable: true,
+                  sex: 1)
+
+pet4 = Pet.create(image: "lassie.jpg",
+                  name: "Lassie",
+                  approximate_age: 50,
+                  shelter_id: 1,
+                  description: "Hero",
+                  adoptable: true,
+                  sex: 0)
 
 # PetApplication.create!(pet: pet1, application: application1)
