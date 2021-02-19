@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Pet, type: :model do
+
   describe 'relationships' do
     it {should belong_to :shelter}
     it {should have_many :pet_applications}
@@ -22,8 +23,32 @@ describe Pet, type: :model do
                           approximate_age: 1,
                           shelter_id: 1,
                           description: "Full of energy",
-                          adoptable: false,
+                          adoptable: true,
                           sex: 1)
+
+        # pet2 = Pet.create(image: "clifford.jpg",
+        #                   name: "Clifford",
+        #                   approximate_age: 30,
+        #                   shelter_id: 1,
+        #                   description: "Big and red",
+        #                   adoptable: true,
+        #                   sex: 1)
+        #
+        # pet3 = Pet.create(image: "scooby.jpg",
+        #                   name: "Scooby",
+        #                   approximate_age: 35,
+        #                   shelter_id: 1,
+        #                   description: "Rut Row",
+        #                   adoptable: true,
+        #                   sex: 1)
+        #
+        # pet4 = Pet.create(image: "lassie.jpg",
+        #                   name: "Lassie",
+        #                   approximate_age: 50,
+        #                   shelter_id: 1,
+        #                   description: "Hero",
+        #                   adoptable: true,
+        #                   sex: 0)
         expect(Pet.find_by_name('Rudy')).to eq([pet1])
       end
 
@@ -40,9 +65,8 @@ describe Pet, type: :model do
                           approximate_age: 1,
                           shelter_id: 1,
                           description: "Full of energy",
-                          adoptable: false,
-                          sex: 1
-                        )
+                          adoptable: true,
+                          sex: 1)
         expect(Pet.find_by_name('ud')).to eq([pet1])
       end
 
@@ -59,9 +83,8 @@ describe Pet, type: :model do
                           approximate_age: 1,
                           shelter_id: 1,
                           description: "Full of energy",
-                          adoptable: false,
-                          sex: 1
-                        )
+                          adoptable: true,
+                          sex: 1)
         expect(Pet.find_by_name('Ud')).to eq([pet1])
       end
     end
